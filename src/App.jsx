@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Hero from './components/Hero.jsx';
 import Skills from './components/Skills.jsx';
 import Services from './components/Services.jsx';
+import Projects from './components/Projects.jsx';
 import About from './components/About.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -32,6 +33,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a href="#hero" className="font-semibold tracking-tight">Monish</a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
+            <a href="#projects" className="hover:text-white">Projects</a>
             <a href="#skills" className="hover:text-white">Skills</a>
             <a href="#services" className="hover:text-white">Services</a>
             <a href="#about" className="hover:text-white">About</a>
@@ -54,6 +56,7 @@ export default function App() {
         {menuOpen && (
           <div className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur">
             <div className="px-4 py-3 flex flex-col gap-2 text-sm">
+              <a href="#projects" className="py-2">Projects</a>
               <a href="#skills" className="py-2">Skills</a>
               <a href="#services" className="py-2">Services</a>
               <a href="#about" className="py-2">About</a>
@@ -67,6 +70,9 @@ export default function App() {
       <main>
         <section id="hero" className="pt-16">
           <Hero />
+        </section>
+        <section id="projects">
+          <Projects />
         </section>
         <section id="skills">
           <Skills />
