@@ -117,19 +117,19 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Mini terminal widget with proper alignment */}
+      {/* Mini terminal widget with precise centering for "/bin/monish" */}
       <div className="pointer-events-none absolute bottom-6 right-6 hidden w-[320px] rounded-xl border border-emerald-500/20 bg-black/50 font-mono text-[12px] text-emerald-300 backdrop-blur md:block">
-        {/* Title bar */}
-        <div className="flex items-center justify-between border-b border-emerald-400/10 px-3 py-2">
+        {/* Title bar with grid so the path stays perfectly centered */}
+        <div className="grid grid-cols-[auto_1fr_auto] items-center border-b border-emerald-400/10 px-3 py-2">
           <div className="flex items-center gap-1">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/40" />
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/20" />
           </div>
-          <div className="select-none text-[11px] text-emerald-200/80">/bin/monish</div>
+          <div className="select-none text-center text-[11px] text-emerald-200/80 tabular-nums">/bin/monish</div>
           <div className="w-6" />
         </div>
-        {/* Body content uses pre + grid for clean alignment */}
+        {/* Body content uses pre for perfect alignment */}
         <div className="px-3 py-2">
           <pre className="whitespace-pre leading-relaxed">$ whoami\nmonish@eth0\n\n$ nmap -sV localhost\n8000  open  http-fastapi\n3000  open  vite-react\n</pre>
           <div className="mt-1 h-4 w-2 animate-pulse bg-emerald-400" />
