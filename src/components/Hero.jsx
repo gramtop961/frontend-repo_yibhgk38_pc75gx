@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 export default function Hero() {
   return (
     <div className="relative w-full min-h-[90vh] sm:min-h-[92vh] lg:min-h-[94vh] overflow-hidden">
-      {/* 3D Background */}
+      {/* 3D Background (Cover) */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/ezRAY9QD27kiJcur/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <Spline scene="https://prod.spline.design/ESO6PnMadasO0hU3/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
       {/* Soft gradient overlay for readability (non-blocking) */}
@@ -22,13 +22,13 @@ export default function Hero() {
             className="space-y-6"
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">
-              <span className="size-1.5 rounded-full bg-emerald-400" /> Available for Work
+              <span className="size-1.5 rounded-full bg-emerald-400" /> Open to opportunities
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Building immersive web experiences
+              Monish — immersive web experiences
             </h1>
             <p className="text-white/80 max-w-xl">
-              I design and engineer modern web apps with delightful interactions, 3D visuals, and robust architectures.
+              Full‑stack engineer crafting modern web apps with delightful interactions, interactive 3D visuals, and robust, scalable architectures.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="#services" className="inline-flex items-center justify-center rounded-md bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90">
@@ -81,7 +81,7 @@ export default function Hero() {
                       <span>skills --list</span>
                     </div>
                     <p className="text-white/80">
-                      React, TypeScript, Three/Spline, Tailwind, FastAPI, Node, MongoDB
+                      React, TypeScript, Spline/Three, Tailwind, FastAPI, Node, MongoDB
                     </p>
                     <div className="flex gap-2 items-start">
                       <span className="text-white/60">$</span>
