@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Play, X } from 'lucide-react';
+import { Sparkles, Play, X, Smartphone, Hand } from 'lucide-react';
 
 export default function Hero() {
   const [open, setOpen] = useState(false);
@@ -40,8 +40,8 @@ export default function Hero() {
               Full‑stack engineering with 3D interfaces, fluid motion, and robust architectures. Crafted for performance and delight.
             </p>
 
-            {/* Highly discoverable 3D trigger */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            {/* Desktop / larger screens: discoverable 3D trigger */}
+            <div className="mt-8 hidden sm:flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={() => setOpen(true)}
@@ -52,21 +52,45 @@ export default function Hero() {
                 <Play className="h-4 w-4" />
                 Try the interactive card
               </button>
-              <span className="text-sm text-white/70">
-                Hint: it reacts to your pointer
-              </span>
+              <span className="text-sm text-white/70">Hint: it reacts to your pointer</span>
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Spotlight pulsing cue near bottom to make the interaction easy to find */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:block">
         <motion.div
           className="pointer-events-none h-10 w-10 rounded-full bg-white/40 blur-xl"
           animate={{ opacity: [0.2, 0.6, 0.2], scale: [1, 1.15, 1] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
         />
+      </div>
+
+      {/* Mobile action bar: prominent CTA + gesture hint */}
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-5 pt-3">
+        <div className="rounded-2xl border border-white/15 bg-neutral-900/70 supports-[backdrop-filter]:bg-neutral-900/50 backdrop-blur-md shadow-lg">
+          <div className="px-4 pt-4">
+            <p className="flex items-center gap-2 text-sm text-white/80">
+              <Smartphone className="h-4 w-4" /> Best on mobile too — open 3D mode
+            </p>
+          </div>
+          <div className="p-4 pt-2 flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-white text-neutral-900 px-4 py-3 text-sm font-semibold shadow-black/30 shadow-md active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              aria-haspopup="dialog"
+              aria-expanded={open}
+            >
+              <Play className="h-4 w-4" /> Open 3D
+            </button>
+            <div className="hidden xs:flex items-center gap-2 text-xs text-white/70">
+              <Hand className="h-4 w-4" />
+              <span>Drag to rotate</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Modal focus view for instant wow */}
@@ -85,7 +109,7 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 30, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-              className="relative w-[92vw] max-w-5xl h-[70vh] rounded-2xl overflow-hidden border border-white/15 bg-neutral-950 shadow-2xl"
+              className="relative w-[96vw] sm:w-[92vw] max-w-5xl h-[80vh] sm:h-[70vh] rounded-2xl overflow-hidden border border-white/15 bg-neutral-950 shadow-2xl"
               role="dialog"
               aria-modal="true"
               aria-label="Interactive 3D Card"
@@ -103,6 +127,12 @@ export default function Hero() {
                   scene="https://prod.spline.design/ESO6PnMadasO0hU3/scene.splinecode"
                   style={{ width: '100%', height: '100%' }}
                 />
+              </div>
+              {/* Mobile gesture helper text inside modal */}
+              <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 sm:hidden">
+                <div className="rounded-full bg-black/50 text-white/90 text-xs px-3 py-1.5 border border-white/15 backdrop-blur">
+                  Use one finger to rotate • two fingers to pan
+                </div>
               </div>
             </motion.div>
           </motion.div>
