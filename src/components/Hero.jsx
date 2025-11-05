@@ -6,7 +6,7 @@ export default function Hero() {
     <div className="relative w-full min-h-[90vh] sm:min-h-[92vh] lg:min-h-[94vh] overflow-hidden">
       {/* 3D Background */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <Spline scene="https://prod.spline.design/ezRAY9QD27kiJcur/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
       {/* Soft gradient overlay for readability (non-blocking) */}

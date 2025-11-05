@@ -2,25 +2,25 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
-    title: 'Neon UI Kit',
-    tag: 'Frontend',
-    desc: 'A motion-first component library with dark neon aesthetics and accessible patterns.',
-    stack: ['React', 'Tailwind', 'Framer Motion'],
-    link: 'https://github.com/'
+    title: 'Iterative Methods Calculator',
+    tag: 'Math · Web App',
+    desc: 'A calculator for numerical methods (Newton-Raphson, Secant, Bisection, and more) with clean results and step visualizations.',
+    stack: ['JavaScript', 'React', 'Numerical Methods'],
+    link: 'https://github.com/GINGKA-HAGANE-1/Iterative-Methods-Calculator'
   },
   {
-    title: 'API Plaza',
-    tag: 'Backend',
-    desc: 'FastAPI microservices with rate limiting, OpenAPI docs, and JWT auth baked-in.',
-    stack: ['FastAPI', 'Python', 'MongoDB'],
-    link: 'https://github.com/'
+    title: 'Instagram Reels Downloader',
+    tag: 'Utility · Web',
+    desc: 'Lightweight tool to fetch and download Instagram Reels URLs with a simple, responsive UI.',
+    stack: ['Node/Express', 'React', 'Scraping'],
+    link: 'https://github.com/GINGKA-HAGANE-1/Instagram-reels-downloader'
   },
   {
-    title: '3D Playground',
-    tag: '3D',
-    desc: 'Interactive Spline scenes integrated into React with smooth, GPU-friendly effects.',
-    stack: ['Spline', 'React'],
-    link: 'https://github.com/'
+    title: 'Gingkafy (Music App)',
+    tag: 'Music · App',
+    desc: 'A vibrant, playlist-first music experience with smooth UI and fast search for tracks and artists.',
+    stack: ['React', 'UI/UX', 'Audio'],
+    link: 'https://github.com/GINGKA-HAGANE-1/gingkafy'
   },
 ];
 
@@ -38,7 +38,7 @@ export default function Projects() {
         >
           <h2 className="text-2xl sm:text-3xl font-semibold">Featured Projects</h2>
           <a
-            href="https://github.com/"
+            href="https://github.com/GINGKA-HAGANE-1"
             target="_blank"
             rel="noreferrer"
             className="hidden sm:inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
@@ -64,7 +64,7 @@ export default function Projects() {
               <h3 className="mt-1 text-lg font-medium">{p.title}</h3>
               <p className="mt-2 text-white/80 text-sm">{p.desc}</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {p.stack.map(s => (
+                {p.stack.map((s) => (
                   <span key={s} className="rounded-md border border-white/10 bg-black/50 px-2 py-1 text-[11px] text-white/70">{s}</span>
                 ))}
               </div>
