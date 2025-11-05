@@ -1,20 +1,20 @@
-import { Github, Mail, MapPin, Phone } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
     <footer id="contact" className="relative bg-slate-900 py-16 text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(40%_40%_at_50%_0%,rgba(16,185,129,0.10)_0%,transparent_60%)]" />
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 sm:grid-cols-2">
-        <div>
+      <div className="relative mx-auto max-w-3xl px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-2xl"
+        >
           <h3 className="text-2xl font-semibold">Let’s build something great</h3>
-          <p className="mt-2 max-w-md text-white/70">Available for freelance and collaborations. Share your idea — I’ll reply within 24 hours.</p>
-
-          <div className="mt-6 space-y-3 text-sm text-white/80">
-            <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-emerald-400" /> monish@example.com</div>
-            <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-emerald-400" /> +91 80000 00000</div>
-            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-emerald-400" /> India • Remote worldwide</div>
-          </div>
+          <p className="mt-2 text-white/70">Prefer keeping it simple? Connect with me on GitHub.</p>
 
           <a
             href="https://github.com/GINGKA-HAGANE-1"
@@ -24,34 +24,7 @@ export default function Footer() {
           >
             <Github className="h-4 w-4" /> GitHub
           </a>
-        </div>
-
-        <motion.form
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          onSubmit={(e) => e.preventDefault()}
-          className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-        >
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label className="text-sm text-white/80">Name</label>
-              <input className="mt-1 w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Your name" />
-            </div>
-            <div>
-              <label className="text-sm text-white/80">Email</label>
-              <input type="email" className="mt-1 w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-emerald-400" placeholder="you@email.com" />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-sm text-white/80">Message</label>
-              <textarea rows={4} className="mt-1 w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Tell me about your project" />
-            </div>
-          </div>
-          <button className="mt-4 w-full rounded-lg bg-emerald-500 px-4 py-2 font-medium text-slate-900 hover:bg-emerald-400">
-            Send message
-          </button>
-        </motion.form>
+        </motion.div>
       </div>
       <div className="relative mx-auto mt-8 max-w-6xl px-6 text-center text-xs text-white/60">
         © {new Date().getFullYear()} Monish. All Rights Reserved.
