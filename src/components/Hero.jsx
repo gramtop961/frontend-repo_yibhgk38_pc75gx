@@ -1,140 +1,100 @@
 import Spline from '@splinetool/react-spline';
-import { Github, Shield, Rocket, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[92vh] w-full overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 text-white">
-      {/* 3D Scene (full-bleed cover) */}
+    <div className="relative w-full min-h-[90vh] sm:min-h-[92vh] lg:min-h-[94vh] overflow-hidden">
+      {/* 3D Background */}
       <div className="absolute inset-0">
-        <Spline
-          scene="https://prod.spline.design/WCoEDSwacOpKBjaC/scene.splinecode"
-          style={{ width: '100%', height: '100%' }}
-        />
+        <Spline scene="https://prod.spline.design/WCoEDSwacOpKBjaC/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Soft gradient overlays that don't block interaction */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/30 to-slate-900" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-900" />
+      {/* Soft gradient overlay for readability (non-blocking) */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
 
       {/* Content */}
-      <div className="relative mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 pt-28 pb-20 sm:pt-36">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur"
-        >
-          <Shield className="h-4 w-4 text-emerald-400" />
-          <span className="text-sm text-white/80">Ethical Hacker • Full Stack • Game Dev</span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.05 }}
-          className="text-4xl font-extrabold tracking-tight sm:text-6xl"
-        >
-          Hey, I'm <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Monish</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
-        >
-          I build secure, performant, and innovative experiences across Web, Full‑Stack, and Game Development.
-          With a focus on Ethical Hacking and Penetration Testing, I help keep products fast and safe.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="flex flex-wrap items-center gap-3"
-        >
-          <a
-            href="https://github.com/GINGKA-HAGANE-1"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 font-medium text-slate-900 shadow/50 shadow-emerald-500/10 transition hover:shadow-lg hover:shadow-emerald-400/20"
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
           >
-            <Github className="h-4 w-4" /> View GitHub
-          </a>
-          <a
-            href="#services"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 font-medium text-white transition hover:bg-white/20"
-          >
-            <Rocket className="h-4 w-4" /> Services
-          </a>
-          <a
-            href="#about"
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/90 px-4 py-2 font-medium text-white transition hover:bg-emerald-400"
-          >
-            <Terminal className="h-4 w-4" /> About
-          </a>
-        </motion.div>
-
-        {/* Skill chips */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-4 flex w-full flex-wrap gap-2"
-        >
-          {[
-            'HTML5', 'CSS3', 'JavaScript', 'React.js', 'Node.js', 'MongoDB', 'MySQL',
-            'Unity', 'C#', 'PenTesting', 'Security Auditing', 'Vulnerability Assessment',
-          ].map((chip) => (
-            <span
-              key={chip}
-              className="rounded-full bg-white/5 px-3 py-1 text-sm text-white/80 ring-1 ring-white/10"
-            >
-              {chip}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* Quick stats - subtle and responsive */}
-        <motion.div
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-6 grid w-full grid-cols-2 gap-3 sm:grid-cols-4"
-        >
-          {[
-            { k: 'Projects', v: '20+' },
-            { k: 'Hack Simulations', v: '100+' },
-            { k: 'Game Prototypes', v: '10+' },
-            { k: 'Uptime', v: '99.9%' },
-          ].map((s) => (
-            <div key={s.k} className="rounded-xl bg-white/5 p-3 text-center ring-1 ring-white/10">
-              <div className="text-xl font-semibold text-white">{s.v}</div>
-              <div className="text-xs text-white/70">{s.k}</div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80">
+              <span className="size-1.5 rounded-full bg-emerald-400" /> Available for Work
             </div>
-          ))}
-        </motion.div>
-      </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              Building immersive web experiences
+            </h1>
+            <p className="text-white/80 max-w-xl">
+              I design and engineer modern web apps with delightful interactions, 3D visuals, and robust architectures.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href="#services" className="inline-flex items-center justify-center rounded-md bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90">
+                Explore Services
+              </a>
+              <a href="#skills" className="inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 px-5 py-2.5 text-sm hover:bg-white/10">
+                View Skills
+              </a>
+            </div>
+          </motion.div>
 
-      {/* Mini terminal widget with precise centering for "/bin/monish" */}
-      <div className="pointer-events-none absolute bottom-6 right-6 hidden w-[320px] rounded-xl border border-emerald-500/20 bg-black/50 font-mono text-[12px] text-emerald-300 backdrop-blur md:block">
-        {/* Title bar with grid so the path stays perfectly centered */}
-        <div className="grid grid-cols-[auto_1fr_auto] items-center border-b border-emerald-400/10 px-3 py-2">
-          <div className="flex items-center gap-1">
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/40" />
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/20" />
-          </div>
-          <div className="select-none text-center text-[11px] text-emerald-200/80 tabular-nums">/bin/monish</div>
-          <div className="w-6" />
-        </div>
-        {/* Body content uses pre for perfect alignment */}
-        <div className="px-3 py-2">
-          <pre className="whitespace-pre leading-relaxed">$ whoami\nmonish@eth0\n\n$ nmap -sV localhost\n8000  open  http-fastapi\n3000  open  vite-react\n</pre>
-          <div className="mt-1 h-4 w-2 animate-pulse bg-emerald-400" />
+          {/* Mini Terminal Widget */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="w-full flex items-center justify-center"
+          >
+            <div
+              className="w-full max-w-xl rounded-xl border border-white/10 bg-black/60 backdrop-blur shadow-2xl overflow-hidden"
+            >
+              {/* Title Bar with centered path */}
+              <div className="grid grid-cols-3 items-center px-3 py-2 border-b border-white/10">
+                <div className="flex items-center gap-1.5">
+                  <span className="size-2.5 rounded-full bg-red-500" />
+                  <span className="size-2.5 rounded-full bg-amber-400" />
+                  <span className="size-2.5 rounded-full bg-emerald-500" />
+                </div>
+                <div className="text-center text-xs text-white/70 font-mono tabular-nums truncate">
+                  /bin/monish
+                </div>
+                <div />
+              </div>
+
+              {/* Body */}
+              <div className="p-4 sm:p-5 md:p-6 font-mono text-[12px] sm:text-[13px] leading-relaxed text-white/90 bg-gradient-to-b from-white/5 to-transparent">
+                <div className="rounded-md bg-black/40 border border-white/10 p-3 sm:p-4 overflow-auto max-h-72">
+                  <div className="space-y-2 whitespace-pre-wrap break-words">
+                    <div className="flex gap-2">
+                      <span className="text-emerald-400">monish@portfolio</span>
+                      <span className="text-white/60">~</span>
+                      <span className="text-white/60">$</span>
+                      <span>cat profile.txt</span>
+                    </div>
+                    <p>
+                      Full-stack developer focused on interactive UIs, performant backends, and clean DX.
+                    </p>
+                    <div className="flex gap-2">
+                      <span className="text-white/60">$</span>
+                      <span>skills --list</span>
+                    </div>
+                    <p className="text-white/80">
+                      React, TypeScript, Three/Spline, Tailwind, FastAPI, Node, MongoDB
+                    </p>
+                    <div className="flex gap-2 items-start">
+                      <span className="text-white/60">$</span>
+                      <span className="block">deploy --target=production --zero-downtime</span>
+                    </div>
+                    <p className="text-emerald-400">✔ Deployed successfully</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

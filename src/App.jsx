@@ -1,58 +1,86 @@
-import { useState } from 'react';
-import Hero from './components/Hero';
-import Skills from './components/Skills';
-import Services from './components/Services';
-import About from './components/About';
-import Footer from './components/Footer';
-import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import Hero from './components/Hero.jsx';
+import Skills from './components/Skills.jsx';
+import Services from './components/Services.jsx';
+import About from './components/About.jsx';
+import Footer from './components/Footer.jsx';
 
-function App() {
-  const [open, setOpen] = useState(false);
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const close = () => setOpen(false);
+  useEffect(() => {
+    const handleLink = (e) => {
+      const target = e.target;
+      if (target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const id = target.getAttribute('href');
+        const el = document.querySelector(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setMenuOpen(false);
+        }
+      }
+    };
+    document.addEventListener('click', handleLink);
+    return () => document.removeEventListener('click', handleLink);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white scroll-smooth">
-      {/* Top nav */}
-      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <a href="#hero" className="text-lg font-semibold tracking-tight" onClick={close}>Monish</a>
-
-          {/* Desktop nav */}
-          <nav className="hidden gap-6 text-sm sm:flex">
-            <a href="#skills" className="text-white/80 hover:text-white">Skills</a>
-            <a href="#services" className="text-white/80 hover:text-white">Services</a>
-            <a href="#about" className="text-white/80 hover:text-white">About</a>
-            <a href="#contact" className="rounded-lg bg-emerald-500 px-3 py-1.5 text-slate-900 hover:bg-emerald-400">Contact</a>
+    <div className="min-h-screen bg-black text-white">
+      {/* Nav */}
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a href="#hero" className="font-semibold tracking-tight">Monish</a>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
+            <a href="#skills" className="hover:text-white">Skills</a>
+            <a href="#services" className="hover:text-white">Services</a>
+            <a href="#about" className="hover:text-white">About</a>
+            <a href="#contact" className="hover:text-white">Contact</a>
           </nav>
-
-          {/* Mobile toggle */}
-          <button aria-label="Toggle menu" className="sm:hidden" onClick={() => setOpen((v) => !v)}>
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <button
+            aria-label="Menu"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 hover:bg-white/5"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 6h18M3 12h18M3 18h18" />
+              )}
+            </svg>
           </button>
         </div>
-        {open && (
-          <div className="sm:hidden">
-            <nav className="mx-3 mb-3 overflow-hidden rounded-xl border border-white/10 bg-slate-900/95 p-2">
-              <a href="#skills" onClick={close} className="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/5">Skills</a>
-              <a href="#services" onClick={close} className="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/5">Services</a>
-              <a href="#about" onClick={close} className="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/5">About</a>
-              <a href="#contact" onClick={close} className="block rounded-lg bg-emerald-500/90 px-3 py-2 text-slate-900 hover:bg-emerald-400">Contact</a>
-            </nav>
+        {menuOpen && (
+          <div className="md:hidden border-t border-white/10 bg-black/80 backdrop-blur">
+            <div className="px-4 py-3 flex flex-col gap-2 text-sm">
+              <a href="#skills" className="py-2">Skills</a>
+              <a href="#services" className="py-2">Services</a>
+              <a href="#about" className="py-2">About</a>
+              <a href="#contact" className="py-2">Contact</a>
+            </div>
           </div>
         )}
       </header>
 
+      {/* Sections */}
       <main>
-        <Hero />
-        <Skills />
-        <Services />
-        <About />
+        <section id="hero" className="pt-16">
+          <Hero />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="contact" className="pb-10">
+          <Footer />
+        </section>
       </main>
-
-      <Footer />
     </div>
   );
 }
-
-export default App;
