@@ -117,22 +117,23 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Subtle hacker hint: tiny terminal widget */}
-      <div className="pointer-events-none absolute bottom-6 right-6 hidden w-[280px] rounded-xl border border-emerald-500/20 bg-black/40 p-4 font-mono text-[12px] text-emerald-300 backdrop-blur md:block">
-        <div className="mb-2 flex items-center gap-1 text-emerald-400/80">
-          <span className="h-2 w-2 rounded-full bg-emerald-500/70" />
-          <span className="h-2 w-2 rounded-full bg-emerald-500/40" />
-          <span className="h-2 w-2 rounded-full bg-emerald-500/20" />
-          <span className="ml-2">/bin/monish</span>
+      {/* Mini terminal widget with proper alignment */}
+      <div className="pointer-events-none absolute bottom-6 right-6 hidden w-[320px] rounded-xl border border-emerald-500/20 bg-black/50 font-mono text-[12px] text-emerald-300 backdrop-blur md:block">
+        {/* Title bar */}
+        <div className="flex items-center justify-between border-b border-emerald-400/10 px-3 py-2">
+          <div className="flex items-center gap-1">
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/40" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/20" />
+          </div>
+          <div className="select-none text-[11px] text-emerald-200/80">/bin/monish</div>
+          <div className="w-6" />
         </div>
-        <div>
-          <span className="text-emerald-400">$</span> whoami
+        {/* Body content uses pre + grid for clean alignment */}
+        <div className="px-3 py-2">
+          <pre className="whitespace-pre leading-relaxed">$ whoami\nmonish@eth0\n\n$ nmap -sV localhost\n8000  open  http-fastapi\n3000  open  vite-react\n</pre>
+          <div className="mt-1 h-4 w-2 animate-pulse bg-emerald-400" />
         </div>
-        <div className="">monish@eth0</div>
-        <div className="mt-1"><span className="text-emerald-400">$</span> nmap -sV localhost</div>
-        <div className="opacity-80">8000 open  http-fastapi</div>
-        <div className="opacity-80">3000 open  vite-react</div>
-        <div className="mt-1"><span className="text-emerald-400">$</span> _<span className="ml-1 inline-block h-4 w-2 animate-pulse bg-emerald-400" /></div>
       </div>
     </section>
   );
